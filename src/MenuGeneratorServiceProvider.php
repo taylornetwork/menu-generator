@@ -2,29 +2,21 @@
 
 namespace TaylorNetwork\MenuGenerator;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class MenuGeneratorServiceProvider extends ServiceProvider
 {
     /**
-     * @var Request
-     */
-    private $request;
-
-    /**
      * Boot
      * 
      * @param Request $request
      */
-    public function boot (Request $request)
+    public function boot ()
     {
         $this->publishes([
             __DIR__.'/config/menu_generator.php' => config_path('menu_generator.php'),
         ]);
-
-        $this->request = $request;
     }
 
     /**
@@ -81,11 +73,7 @@ class MenuGeneratorServiceProvider extends ServiceProvider
         if ($key !== null)
         {
             $var = str_replace('{key}', $key, config('menu_generator.shareKey', '{key}Menu'));
-            
-            $instance = new $class ($this->request);
-            $instance->define();
-            
-            View::share($var, $instance);
+            View::share($var, (new $class ()));
         }
     }
 }

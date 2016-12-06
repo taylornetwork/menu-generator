@@ -34,6 +34,11 @@ abstract class Definition
      */
     public function __construct (Request $request = null)
     {
+        if ($request === null)
+        {
+            $request = app(Request::class);
+        }
+        
         $this->generator = new Generator($request);
 
         $this->generator->setCallback('menu.after.open', function () {
