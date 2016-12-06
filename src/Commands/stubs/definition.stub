@@ -1,0 +1,37 @@
+<?php
+
+namespace DummyNamespace;
+
+use TaylorNetwork\MenuGenerator\Definition;
+
+class DummyClass extends Definition
+{
+    /**
+     * Menu Key
+     *
+     * Set a string value of the variable name you want
+     * this menu to be accessible as in all views.
+     * Leave as null if you do not want this definition
+     * to be shared by the service provider.
+     *
+     * @const string
+     */
+    const menuKey = null;
+
+    /**
+     * Menu definition
+     *
+     * See the documentation for generator commands.
+     */
+    public function define ()
+    {
+        /*
+        $this->getGenerator()->newMenu();
+          $this->getGenerator()->addItem('Home', route('home'), true, 'fa-home');
+          $this->getGenerator()->addSubMenu('SubMenu');
+            $this->getGenerator()->addItem('Child Item');
+          $this->getGenerator()->closeSubMenu();
+        $this->getGenerator()->closeMenu();
+        */
+    }
+}
